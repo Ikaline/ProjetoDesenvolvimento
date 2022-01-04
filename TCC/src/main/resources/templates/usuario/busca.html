@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Pesquisar Usuários</title>
+    
+    <style>
+    
+    body {
+	background: url("/imagens/iMetting.png");
+	}
+    
+    	select {
+    	width: 65%;
+    	}
+    
+    
+      #verPerfil{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    }
+    	
+    </style>
+    
+</head>
+<body>
+
+<section layout:fragment="corpo">
+
+    <div id=dialog>
+    <form th:action="@{/usuarios/buscar}" method="get" class="formulario">
+    
+    <table>
+    
+        <tr>
+            <td colspan="3"><h2>Pesquisar Usuários</h2></td>
+        </tr>
+        
+        <tr>
+        <td colspan="3">
+            <h6>Pesquise por usuários!</h6>
+        </td>
+        </tr>
+    
+        <tr>
+        <div th:if="${msgSucesso} != null">
+            <b th:text="${msgSucesso}" style="color: black;"></b>
+            <br/><br/>
+        </div>
+    
+        <div th:if="${msgErro} != null">
+            <b th:text="${msgErro}" style="color:red;"></b>
+            <br/><br/>
+        </div>
+        
+        </tr>
+    
+    
+    
+        <tr>
+            <td class="icon"> <i class="fas fa-user"></i></td>
+            <td>
+                <input type="hidden" th:name="nome" placeholder="Nome" class="nome"/>
+            </td>
+        </tr>
+        
+        
+        <tr>
+            <td class="icon">Ordenação:</td>
+                <td colspan="2">
+            <select th:name="ordenacao">
+                  <option value="maior">Maior afinidade</option>
+                  <option value="menor">Menor afinidade</option>
+            </select>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="icon">Genero:</td>
+                <td colspan="2">
+            <select th:name="genero">
+                  <option value="F">Feminino</option>
+                  <option value="M">Masculino</option>
+                  <option value="ambos">Ambos</option>
+            </select>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="icon">Campus</td>
+                <td colspan="2">
+            <select th:name="campus">
+                  <option value="Apodi">Apodi</option>
+                  <option value="Caicó">Caicó</option>
+                  <option value="Canguaretama">Canguaretama</option>
+                  <option value="Ceará-Mirim">Ceará-Mirim</option>
+                  <option value="Currais Novos">Currais Novos</option>
+                  <option value="Ipanguaçu">Ipanguaçu</option>
+                  <option value="João Câmara">João Câmara</option>
+                  <option value="Jucurutu">Jucurutu</option>
+                  <option value="Lajes">Lajes</option>
+                  <option value="Macau">Macau</option>
+                  <option value="Mossoró">Mossoró</option>
+                  <option value="Natal - Central">Natal - Central</option>
+                  <option value="Natal - Cidade Alta">Natal - Cidade Alta</option>
+                  <option value="Natal - Zona Leste">Natal - Zona Leste</option>
+                  <option value="Natal-Zona Norte">Natal - Zona Norte</option>
+                  <option value="Nova Cruz">Nova Cruz</option>
+                  <option value="Parelhas">Parelhas</option>
+                  <option value="Parnamirim">Parnamirim</option>
+                  <option value="Pau dos Ferros">Pau dos Ferros</option>
+                  <option value="Santa Cruz">Santa Cruz</option>
+                  <option value="São Gonçalo do Amarante">São Gonçalo do Amarante</option>
+                  <option value="São Paulo do Potengi">São Paulo do Potengi</option>
+            </select>
+            </td>
+        </tr>
+        
+        
+        
+        <div th:if="${usuariosEncontrados} != null">
+    
+        <tr>
+        <th>Foto:</th>
+        <th>Nome:</th>
+        <th>Campus:</th>
+        <th>Perfil:</th>
+    
+        </tr>
+    
+        </div>
+    
+    
+        <tr th:each="u : ${usuariosEncontrados}">
+        	<td>
+        		<img th:if="${u.foto != null}" 
+        			th:src="@{/download/} + ${u.foto.id} +'?salvar=false'"
+        			style="max-height: 100px;"/>
+        	</td>
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.campus}"></td>
+            <td>
+				<a id="verPerfil"class="nav-link" th:href= "'/Publico/visitarPerfil/' + ${u.id}" >
+				Ver Perfil
+				</a>
+				
+				</td>
+        </tr>
+
+ 
+
+        <tr>
+            
+            <td colspan="3">
+                <input type="submit" value="Buscar" class="botaoCad"/>
+                <input type="submit" value="Cancelar" formaction="/" formmethod="get" class="botaoCad"/>
+            </td>
+        </tr>
+        
+    </table>
+    
+    </form>
+
+ 
+    </div>
+</section>
+
+</body>
+</html>

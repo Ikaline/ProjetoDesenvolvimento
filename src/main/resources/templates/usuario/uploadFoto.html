@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+<head>
+
+    <meta charset="UTF-8">
+    
+    <title>Publicar Fotos</title>
+    
+    <style>
+    body {
+	background: url("/imagens/iMetting.png");
+	}
+    </style>
+    
+</head>
+<body>
+
+	<section layout:fragment="corpo">
+
+	 <div id=dialog>
+    <form th:action="@{/uploadFoto/salvarUploadFoto}" th:object="${usuario}"
+    method="post" class="formulario" enctype= "multipart/form-data">
+
+	<table>
+	
+	<tr>
+		<td colspan="2"><h2>Publicar Fotos</h2></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2"><h6>Adicione suas fotos para que possam ver!</h6></td>
+	</tr>
+	
+	<tr>
+		<td><div th:replace="fragments/mensagens"></div></td>
+	</tr>
+	
+		<tr>
+        <td colspan="2">
+            
+                <input type="file" th:name="file" style="color: black; font-weight: 500;"/>
+                <input type="text" th:name="legenda" />
+                
+                <input type="file" th:name="file" style="color: black; font-weight: 500;"/>
+                <input type="text" th:name="legenda" />
+                
+                <input type="file" th:name="file" style="color: black; font-weight: 500;"/>
+                <input type="text" th:name="legenda" />
+                
+                <input type="file" th:name="file" style="color: black; font-weight: 500;"/>
+                <input type="text" th:name="legenda" />
+                
+                <input type="file" th:name="file" style="color: black; font-weight: 500;"/>
+                <input type="text" th:name="legenda" />
+               	
+               	<input type="hidden" th:field="${usuario.foto.id}"/>
+                <input type="hidden" th:field="${usuario.id}"/>
+                <input type="hidden" th:field="${usuario.nome}"/>
+                <input type="hidden" th:field="${usuario.email}"/>
+                <input type="hidden" th:field="${usuario.senha}"/>
+                <input type="hidden" th:field="${usuario.dia}"/>
+                <input type="hidden" th:field="${usuario.ano}"/>
+                <input type="hidden" th:field="${usuario.mes}"/>
+                <input type="hidden" th:field="${usuario.sexo}"/>
+                <input type="hidden" th:field="${usuario.confirm}"/>
+                <input type="hidden" th:field="${usuario.telefone}"/>
+                <input type="hidden" th:field="${usuario.campus}"/>
+                <input type="hidden" th:field="${usuario.afinidade}"/>
+                <input type="hidden" th:field="${usuario.bio}"/>
+                <input type="hidden" th:field="${usuario.interesseDanca}"/>
+                <input type="hidden" th:field="${usuario.interesseArte}"/>
+                <input type="hidden" th:field="${usuario.interessePolitica}"/>
+                <input type="hidden" th:field="${usuario.interesseFutebol}"/>
+                <input type="hidden" th:field="${usuario.interesseFestas}"/>
+                <input type="hidden" th:field="${usuario.interesseMusica}"/>
+                <input type="hidden" th:field="${usuario.interesseEsportes}"/>
+                <input type="hidden" th:field="${usuario.interesseComedia}"/>
+                <input type="hidden" th:field="${usuario.interesseFilmes}"/>
+                <input type="hidden" th:field="${usuario.interesseSeries}"/>
+                <input type="hidden" th:field="${usuario.interesseAnimes}"/>
+                <input type="hidden" th:field="${usuario.interesseCozinhar}"/>
+                <input type="hidden" th:field="${usuario.interesseViagens}"/>
+                <input type="hidden" th:field="${usuario.interesseEstudar}"/>
+      
+  </td>
+    </tr>
+    
+    	<tr>
+            <td colspan="2">
+            <input type="submit" value="Salvar" class="botaoCad"/>
+             <input type="submit" value="Cancelar" formaction="/" formmethod="get" class="botaoCad"/>
+            </td>
+        </tr>
+    
+	</table>
+    </form>
+    
+    </div>
+    
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang = "pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro de Usuário</title>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+	
+	<style>
+	#dialog {
+    background-color: rgba(0, 0, 0, .8) ;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+	
+	.formulario {
+	width: 300px;
+	background: #eb2f06;
+	color: white;
+	padding: 20px 40px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+	
+	.formulario h2 {
+	text-align: center;
+	border-bottom: 2px solid white;
+	padding-bottom: 8px;
+	margin-bottom: 15px;
+	}
+	
+	table {
+	width: 100%;
+	}
+	
+	.email, .senha {
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	width: 95%;
+	}
+	
+	td.icon {
+	width: 25px;
+	}
+	
+	td {
+	padding: 3px;
+	}
+	
+	.botaoLog{
+	width: 100%;
+	border: 2px solid white;
+	background: #eb2f06;
+	color: white;
+	border-radius: 5px;
+	padding: 7px 15px;
+	}
+	
+	.divEntrar{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	}
+	
+	.divLembrar{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	}
+	
+	hr {
+	margin-top: 11px;
+	color: #bdc3c7;
+	border-top: 0;
+	}
+	
+	.divLink {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	}
+	
+	.divLink a {
+	width: 50%;
+	border: 2px solid white;
+	background: #dcdde1;
+	color: #eb2f06;
+	border-radius: 5px;
+	padding: 7px 15px;
+	text-decoration: none;
+	}
+	
+	</style>
+</head>
+<body>
+
+	<div id=dialog>
+	<form th:action="@{/login}" method="post" class="formulario">
+
+	
+	<table>
+	
+	<tr>
+		<td colspan="2"><h2>Login de Usuario</h2></td>
+	</tr>
+	<tr>
+		<td><div th:replace="fragments/mensagens"></div></td>
+	</tr>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-envelope"></i></td>
+			<td>
+				<input type="text" name="username" placeholder="Email" class="email" required autofocus/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-lock"></i></td>
+			<td>
+				<input type="password" name="password" placeholder="Senha" class="senha" required/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<div class="divLembrar"><input type="checkbox" name="remember-me"/>Lembrar-me</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<div class="divEntrar"><button type="submit" class="botaoLog">Entrar</button></div>
+				<hr/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<div class="divLink"><a href="/usuarios/cadastro">Cadastrar usuário</a><br/></div>
+			</td>
+		</tr>
+		
+	</table>
+	
+	</form>
+	</div>
+
+</body>
+</html>

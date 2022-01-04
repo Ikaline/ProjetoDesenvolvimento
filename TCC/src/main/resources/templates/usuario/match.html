@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Match</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+    
+     <style>
+     
+      body{
+      background: url("/imagens/iMetting.png");
+      
+      }
+      #central{
+       background-color: rgba(0, 0, 0, .8) ;
+      z-index: 998;
+      }
+    
+        .central{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            box-shadow: 42px 4px 15px rgb(0 0 0 / 25%);
+            position: relative;
+            margin: 7px;
+        }
+
+          .card {
+        margin: 10px;
+        box-shadow: 0px 5px 10px red;
+        }
+        .coracao {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #eb2f06;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        position: absolute;
+        top: 145px;
+        left: 95px;
+        box-shadow: 4px 4px 15px rgb(0 0 0 / 25%);
+        }
+
+        .dialog {
+            background-color: rgba(0, 0, 0, .8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+        }
+
+        .cardMatch {
+            width: 420px;
+            height: 340px;
+            background-color:white;
+            border-radius: 10px;
+        }
+
+        .descktop {
+            width: 100%;
+            height: 120px;
+            color: white;
+            position: relative;
+        }
+
+        .descktop {
+            font-family: "Playball";
+            font-size: 20px;
+            color:black;
+            font-weight: bold;
+        }
+
+
+        .desckbottom {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .desckbottom img{
+            height: 200px;
+            width: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 10px;
+        }
+        
+		
+        .coracaoOutro {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #eb2f06;
+        color: white;
+        display: flex;
+         justify-content: center;
+        align-items: center;
+       font-size: 28px;
+        position: absolute;
+        top: 50px;
+        
+        }
+       
+       h3{
+       
+        color:#eb2f06;
+   		text-align: center;
+   		font-size: 40px;
+   		margin: 20px 0 20px 0;
+       
+       }
+     
+		
+        </style>
+    
+</head>
+<body>
+
+<section  layout:fragment="corpo">
+<div id="central">
+ <div class ="nada">
+                   
+                   <br/>
+                   <br/>
+                   <br/>
+                   
+                   </div>
+	<div class="MatchsRecebido" style ="text-align: center">
+	
+			<h3>Matches Recebidos</h3>
+				
+	</div>
+			
+    <div class="central">
+    
+    
+<i class="fas fa-angle-left" style="color: #eb2f06; font-size: 100px; padding-top: 100px; padding-right: 30px;"></i>
+
+      <div class="card" style="width: 270px; height: 300px">
+        <img src="/imagens/Igor.png" class="card-img-top img-fluid" alt="..." style="height: 12rem;">
+        <div class="card-body">
+            <div class="coracao">
+                <i class="bi bi-suit-heart-fill"></i>
+                </div>
+          <h2 class="card-title text-center mt-2">Igor Bruno
+           <a href= "#" style="font-size: 20px;"> Conhecer Perfil</a>
+          </h2>
+        
+        </div>
+      </div>
+       <div class="card" style="width: 270px; height: 300px">
+        <img src="/imagens/Luiz.jpg" class="card-img-top img-fluid" alt="..." style="height: 12rem; ">
+        <div class="card-body">
+            <div class="coracao">
+                <i class="bi bi-suit-heart-fill"></i>
+                </div>
+        <h2 class="card-title text-center mt-2">Luiz Felipe
+           <a href= "#" style="font-size: 20px;"> Conhecer Perfil</a>
+        </div>
+      </div>
+       <div class="card" style="width: 270px; height: 300px">
+        <img src="/imagens/Ryan.png" class="card-img-top img-fluid" alt="..." style="height: 12rem;">
+        <div class="card-body">
+            <div class="coracao">
+                <i class="bi bi-suit-heart-fill"></i>
+                </div>
+          <h2 class="card-title text-center mt-2">Ryan Iuka
+           <a href= "#" style="font-size: 20px;"> Conhecer Perfil</a>
+          </h2>
+        
+        </div>
+      </div>
+      
+      <i class="fas fa-angle-right" style="color:#eb2f06; font-size: 100px; padding-top: 100px; padding-left: 30px;"></i>
+
+
+    </div>
+    
+    <div class="MatchsRecebido" style ="text-align: center">
+	
+		
+			<h3>Matches Dados</h3>
+			
+			
+			</div>
+			
+
+    <div class="central">
+    
+    
+<i class="fas fa-angle-left" style="color: #eb2f06; font-size: 100px; padding-top: 100px; padding-right: 30px;"></i>
+
+      <div class="card" style="width: 270px; height: 300px">
+        <img src="/imagens/Paulo.png" class="card-img-top img-fluid" alt="..." style="height: 12rem">
+        <div class="card-body">
+            <div class="coracao">
+                <i class="bi bi-suit-heart-fill"></i>
+                </div>
+         <h2 class="card-title text-center mt-2">Paulo Styles
+           <a href= "#" style="font-size: 20px;"> Conhecer Perfil</a>
+          </h2>
+        
+        </div>
+      </div>
+       <div class="card" style="width: 270px; height: 300px">
+        <img src="/imagens/Gabriel.png" class="card-img-top img-fluid" alt="..." style="height: 12rem">
+        <div class="card-body">
+            <div class="coracao">
+                <i class="bi bi-suit-heart-fill"></i>
+                </div>
+          <h2 class="card-title text-center mt-2">Gabriel Silva
+           <a href= "#" style="font-size: 20px;"> Conhecer Perfil</a>
+          </h2>
+        
+        </div>
+      </div>
+       <div class="card" style="width: 270px; height: 300px">
+        <img src="/imagens/Nellyson.png" class="card-img-top img-fluid" alt="..." style="height: 12rem">
+        <div class="card-body">
+            <div class="coracao">
+                <i class="bi bi-suit-heart-fill"></i>
+                </div>
+           <h2 class="card-title text-center mt-2">Nellyson Felipe
+           <a href= "#" style="font-size: 20px;"> Conhecer Perfil</a>
+          </h2>
+        
+        </div>
+      </div>
+      
+      <i class="fas fa-angle-right" style="color:#eb2f06; font-size: 100px; padding-top: 100px; padding-left: 30px;"></i>
+
+
+    </div>
+    
+     <div class = "central" style="margin-top: 30px;">
+     <i class="fas fa-angle-left" style="color: #eb2f06; font-size: 100px; padding-top: 100px; padding-right: 30px;"></i>
+        <div class="cardMatch" style="margin-right: 10px;">
+            <div class="descktop"><h1 class="text-center" style="margin-top:20px">Match Multuo</h1>
+            <p class="text-center " style="margin-top: -7px">Isadora e Igor deram match Multuo!</p>
+
+
+        </div>
+            <div class="desckbottom" style="top:-25px;">
+                <div class="d-flex">
+                    <img src="/imagens/Isa.jpg" class="img-fluid" alt="..." >
+
+                    <img src="/imagens/Igor.png" class="img-fluid" alt="..." >
+
+                </div>
+
+                <div class="coracaoOutro">
+                    <i class="bi bi-suit-heart-fill"></i>
+                    </div>
+                    
+        
+
+            </div>
+        </div>
+         <div class="cardMatch">
+            <div class="descktop"><h1 class="text-center" style="margin-top:20px">Match Multuo</h1>
+            <p class="text-center " style="margin-top: -7px">Isadora e Luiz deram match Multuo!</p>
+
+
+        </div>
+            <div class="desckbottom" style="top:-25px;">
+                <div class="d-flex">
+                    <img src="/imagens/Isa.jpg" class="img-fluid" alt="..." >
+
+                    <img src="/imagens/Luiz.jpg" class="img-fluid" alt="..." >
+
+                </div>
+
+                <div class="coracaoOutro">
+                    <i class="bi bi-suit-heart-fill"></i>
+                    </div>
+                    
+        
+
+            </div>
+        </div>
+	<i class="fas fa-angle-right" style="color:#eb2f06; font-size: 100px; padding-top: 100px; padding-left: 30px;"></i>
+	
+	</div>
+	
+	 <div class ="nada">
+                   
+                   <br/>
+                   <br/>
+                   <br/>
+                   
+                   </div>
+			
+    </div>
+</section>
+
+</body>
+</html>

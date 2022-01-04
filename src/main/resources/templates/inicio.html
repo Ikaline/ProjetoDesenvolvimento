@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+  
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+   <style>
+   
+   .card {
+   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+   margin: 10px;
+   }
+   
+   	.card-icon {
+   	width: 110px;
+   	height: 110px;
+   	border-radius: 50%;
+   	background: #eb2f06;
+   	}
+   	
+   	.card-icon i {
+   	font-size: 55px;
+   	color: #fff;
+   	}
+   	
+   	.card-text {
+   	font-size: 18px;
+   	color: #eb2f06;
+   	}
+   	
+   	.hero {
+   	height: 100vh;
+   	}
+   	
+   	.hero-text {
+   	width: 400px;
+   	text-align: center;
+   	color: #eb2f06; 
+   	}
+   	
+   	.hero-text h1 {
+   	font-size: 72px;
+   	}
+   	
+   	.hero-text h5 {
+   	line-height: 180%;
+   	}
+   	
+   	.nada {
+   	height: 110px;
+   	}
+   	
+   	h1 {
+   	color:#eb2f06;
+   	text-align: center;
+   	font-size: 60px;
+   	margin: 60px 0 60px 0;
+   	}
+   </style>
+</head>
+
+<body>
+    <section layout:fragment="corpo">
+        
+       <h1>Bem-vindo ao iMeeting!</h1>
+        
+        <div class="cards d-flex justify-content-center align-items-center flex-wrap">
+        
+        <div class="card" style="width: 18rem;">
+  <div class="card-body d-flex justify-content-center align-items-center flex-column">
+  <div class="card-icon d-flex justify-content-center align-items-center" >
+  <i class="fas fa-route"></i>
+  </div>
+    <h2 class="card-title mt-2" style="color:#eb2f06;">Conexão</h2>
+    <p class="card-text text-center">Responsável por ser uma ponte que liga pessoas.</p>
+
+  </div>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body d-flex justify-content-center align-items-center flex-column">
+  <div class="card-icon d-flex justify-content-center align-items-center" >
+  <i class="fas fa-search"></i>
+  </div>
+    <h2 class="card-title mt-2" style="color:#eb2f06;">Filtro</h2>
+    <p class="card-text text-center">Filtragem de dados de acordo com interesses.</p>
+
+  </div>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body d-flex justify-content-center align-items-center flex-column">
+  <div class="card-icon d-flex justify-content-center align-items-center" >
+  <i class="fas fa-school"></i>
+  </div>
+    <h2 class="card-title mt-2" style="color:#eb2f06;">IFRN</h2>
+    <p class="card-text text-center">Voltado para estudantes que constituem o IFRN.</p>
+
+  </div>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body d-flex justify-content-center align-items-center flex-column">
+  <div class="card-icon d-flex justify-content-center align-items-center" >
+  <i class="fas fa-lock"></i>
+  </div>
+    <h2 class="card-title mt-2" style="color:#eb2f06;">Segurança</h2>
+    <p class="card-text text-center">Dados guardados de forma segura.</p>
+
+  </div>
+</div>
+
+</div>
+
+<div class="hero d-flex justify-content-center align-items-center">
+<div class="hero-text"><h2 class="mb-3">IMEETING: FERRAMENTA DIGITAL PARA INTERAÇÃO E SOCIALIZAÇÃO</h2>
+<h5>Ferramenta que promove a socialização e interação visando os estudantes que compõem o Instituto Federal do estado do Rio Grande do Norte. Dispondo de 22 Campi distribuídos em todo o Estado, a plataforma iMeeting tem como finalidade garantir que as relações interpessoais não sejam afetadas pela distância.</h5>
+</div>
+<div><img alt="" src="/imagens/Mapa2.png"></div>
+</div>
+
+<form th:action="@{logout}"  id ="sair" class="dropdown-item" method="post">
+            <input type="submit" value="sair" /> <br/>
+        </form>
+        </section>
+    
+</body>
+</html>

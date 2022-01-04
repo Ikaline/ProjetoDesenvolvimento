@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Perfil Publico</title>
+    
+    <style>
+        
+        .containerFotoCapa{
+            width: 100%;
+            height: 230px;
+            background: rgb(229,243,235);
+            background: linear-gradient(to bottom, rgba(229,243,235,1) 0%, rgba(238,251,244,1) 81%, rgba(207,38,38,1) 100%);
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .fotoPerfil{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            position: absolute;
+            bottom: -110px;
+            text-align: center;
+        }
+        .imgFoto{
+            height: 190px;
+            width: 190px;
+            border-radius: 50%;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .imgFoto img{
+            height: 180px;
+            width: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .gridFotos {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        justify-content: center;
+        align-items: center;
+        margin-top: 115px;
+        }
+        
+        .card {
+        margin: 10px;
+        box-shadow: 0px 5px 10px red;
+        }
+        
+        .card-img-top {
+           height: 15em;
+        object-fit: cover;
+        }
+       
+       
+    
+    </style>
+    
+</head>
+<body>
+
+ 
+
+<section layout:fragment="corpo">
+
+
+ 
+      <div class="fotos">
+        <div class="containerFotoCapa">
+              <div class="fotoPerfil">
+                  <div class="imgFoto">
+                  <input type="hidden" th:field="${usuario.foto.id}"/>
+                     <img th:if="${usuario.foto != null}"
+                    th:src="@{/download/} + ${usuario.foto.id} + '?salvar=false'">
+                    <img th:if="${usuario.foto == null}"
+                    src="/imagens/default.jpg">
+                  </div>
+                  <h2 th:text="${usuario.nome}"></h2>
+                  <p th:text="${usuario.bio}"></p>
+              
+        </div>
+
+ 		<div>
+ 		
+ 		<form th:action="@{/Match/solicitarMatch/} + ${usuario.id}">
+ 		
+ 		<div th:if="${msgSucesso} != null">
+		<b th:text="${msgSucesso}" style="color: black;"></b>
+		<br/><br/>
+		</div>
+	
+
+ 			<input type="submit" value="Match" class="botaoMatch"/>
+ 		
+ 		</form>
+ 		
+ 		</div>
+
+ 
+    </div>
+    </div>
+   
+   
+    <div class=" gridFotos">
+    
+    <div th:each= "f : ${usuario.publiFoto}">
+    <div class="card" style="width: 15rem;">
+  <img th:src="@{/download/} + ${f.arquivo.id} + '?salvar=false'" class="card-img-top" alt="...">
+  
+  <div class="card-body">
+    <p class="card-text" th:text="${f.legenda}"></p>
+  </div>
+</div>
+    </div>
+    
+    </div>
+    
+</section>
+ 
+
+ 
+
+ 
+
+</body>
+</html>

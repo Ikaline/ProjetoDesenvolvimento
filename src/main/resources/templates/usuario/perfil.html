@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+<head>
+
+    <meta charset="UTF-8">
+    
+    <title>Informações Pessoais</title>
+    
+    <style>
+    body {
+	background: url("/imagens/iMetting.png");
+	}
+    </style>
+    
+</head>
+<body>
+
+	<section layout:fragment="corpo">
+
+    <div id=dialog>
+    <form th:action="@{/perfil/salvarPerfil}" th:object="${usuario}"
+    method="post" class="formulario" enctype= "multipart/form-data">
+    
+    <table>
+    
+    <tr>
+        <td colspan="2"><h2>Informações Pessoais</h2></td>
+    </tr>
+    
+    <tr>
+		<td colspan="2"><h6>Adicione algumas informações...</h6></td>
+	</tr>
+    
+    <tr>
+        <td colspan="2"><div th:if="${msgSucesso} != null">
+        <b th:text="${msgSucesso}" style="color: black;"></b>
+        <br/><br/>
+    </div>
+    </td>
+    </tr>
+    
+    <tr>
+        <td colspan="2">
+    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Insira a foto de perfil
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+            
+                <input type="file" th:name="file" style="color: black;"/>
+                <input type="hidden" th:field="${usuario.foto.id}"/>
+                <input type="hidden" th:field="${usuario.id}"/>
+                <input type="hidden" th:field="${usuario.nome}"/>
+                <input type="hidden" th:field="${usuario.email}"/>
+                <input type="hidden" th:field="${usuario.senha}"/>
+                <input type="hidden" th:field="${usuario.dia}"/>
+                <input type="hidden" th:field="${usuario.ano}"/>
+                <input type="hidden" th:field="${usuario.mes}"/>
+                <input type="hidden" th:field="${usuario.sexo}"/>
+                <input type="hidden" th:field="${usuario.confirm}"/>
+                <input type="hidden" th:field="${usuario.telefone}"/>
+                <input type="hidden" th:field="${usuario.campus}"/>
+                
+      </div>
+    </div>
+  </div>
+  
+      <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Biografia
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+      
+        <textarea id = "bio" name="bio" th:field="${usuario.bio}" rows="4" cols="35" placeholder="Digite sua bio">
+        </textarea>
+        
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Interesses
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       	<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseDanca}"
+					th:value="Danca"/>Dança
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseArte}"
+					th:value="Arte"/>Arte
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interessePolitica}"
+					th:value="Politica"/>Politica
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseFutebol}"
+					th:value="Futebol"/>Futebol
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseFestas}"
+					th:value="Festas"/>Festas
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseMusica}"
+					th:value="Musica"/>Musica
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseEsportes}"
+					th:value="Esportes"/>Esportes
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseComedia}"
+					th:value="Comedia"/>Comedia
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseFilmes}"
+					th:value="Filmes"/>Filmes
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseSeries}"
+					th:value="Series"/>Series
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseAnimes}"
+					th:value="Animes"/>Animes
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseCozinhar}"
+					th:value="Cozinhar"/>Cozinhar
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseViagens}"
+					th:value="Viagens"/>Viagens
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" th:field="${usuario.interesseEstudar}"
+					th:value="Estudar"/>Estudar
+			</div>
+      </div>
+    </div>
+  </div>
+  </div>
+        </td>
+    </tr>
+
+        <tr>
+            <td colspan="2">
+            <input type="submit" value="Salvar" class="botaoCad"/>
+             <input type="submit" value="Cancelar" formaction="/" formmethod="get" class="botaoCad"/>
+            </td>
+        </tr>
+        
+    </table>
+    </form>
+    </div>
+    
+    </section>
+
+</body>
+</html>

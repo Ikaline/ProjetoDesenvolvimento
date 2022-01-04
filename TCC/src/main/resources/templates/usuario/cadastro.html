@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang = "pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
+    crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
+    crossorigin="anonymous"></script>
+	
+	<title>Cadastro de Usuário</title>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+	
+	<style>
+	
+	body {
+	background: url("/imagens/iMetting.png");
+	}
+	
+	#dialog {
+    background-color: rgba(0, 0, 0, .8) ;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+	
+	.formulario {
+	width: 400px;
+	background: #eb2f06;
+	color: white;
+	padding: 20px 40px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	}
+	
+	.formulario h2 {
+	text-align: center;
+	border-bottom: 2px solid white;
+	padding-bottom: 8px;
+	margin-bottom: 15px;
+	}
+	
+	table {
+	width: 100%;
+	}
+	
+	.nome, .email, .senha, .confirm, .telefone, .campus {
+	padding: 5px;
+	border-radius: 5px;
+	border: none;
+	width: 95%;
+	}
+	
+	td.icon {
+	width: 25px;
+	}
+	
+	td {
+	padding: 3px;
+	}
+	
+	select {
+	border-radius: 5px;
+	padding: 2px;
+	color: rgba(117, 117, 117);
+	width: 82px;
+	}
+	
+	.radio {
+	border: 2px solid white;
+	width: 100px;
+	padding: 2px 1px;
+	border-radius: 5px;
+	display: inline-block;
+	}
+	
+	.divBotoes{
+	display: flex;
+	width: 100%;
+	}
+	
+	.botaoCad{
+	width: 48%;
+	border: 2px solid white;
+	background: #eb2f06;
+	color: white;
+	border-radius: 5px;
+	padding: 7px 15px;
+	}
+	
+	.botaoCanc {
+	width: 48%;
+	border: 2px solid white;
+	background: #eb2f06;
+	color: white;
+	border-radius: 5px;
+	padding: 7px 15px;
+	margin-left: 7px;
+	}
+	</style>
+</head>
+<body>
+
+	
+
+	<div id=dialog>
+	<form th:action="@{/usuarios/salvar}" th:object="${usuario}"
+	method="post" class="formulario">
+	
+	<table>
+	
+	<tr>
+		<td colspan="2"><h2>Criar Conta</h2></td>
+	</tr>
+	
+	<tr>
+		<td colspan="2"><div th:if="${msgSucesso} != null">
+		<b th:text="${msgSucesso}" style="color: black;"></b>
+		<br/><br/>
+	</div>
+	
+	<div th:if="${#fields.hasAnyErrors()}">
+			<ul>
+				<li th:each="error : ${#fields.detailedErrors()}">
+				<b th:text="${error.message}" style="color: black;"></b>
+				</li>
+			</ul>
+		</div>
+	
+	<div th:if="${msgErro} != null">
+		<b th:text="${msgErro}" style="color: black;"></b>
+		<br/><br/>
+	</div></td>
+	</tr>
+	
+		<tr>
+			<td class="icon"> <i class="fas fa-user"></i></td>
+			<td>
+				<input type="text" th:field="${usuario.nome}" placeholder="Nome" class="nome"/>
+			</td>
+		</tr>
+		<tr>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-envelope"></i></td>
+			<td>
+				<input type="email" th:field="${usuario.email}" placeholder="Email" class="email"/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-phone-alt"></i></td>
+			<td>
+				<input type="text" th:field="${usuario.telefone}" placeholder="(xx) xxxxx-xxxx" class="telefone"/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-school"></i></td>
+			<td>
+				<select th:field="${usuario.campus}" class="campus">
+				<option value="">Campus</option>
+				<option th:each="c : ${campus}"
+				th:text="${c}" th:value="${c}">
+				</option>
+				</select>
+			</td>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-lock"></i></td>
+			<td>
+				<input type="password" th:field="${usuario.senha}" placeholder="Senha" class="senha"/>
+			</td>
+		</tr>
+		
+		<tr>
+			
+			<td>
+				<input type="password" th:field="${usuario.confirm}" placeholder="Confirmação de senha" class="confirm"/>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="icon"><i class="fas fa-birthday-cake"></i></td>
+			<td>
+				<select th:field="${usuario.dia}">
+				<option value="">Dia</option>
+				<option th:each="d : ${dia}"
+				th:text="${d}" th:value="${d}">
+				</option>
+				</select>
+			
+				<select th:field="${usuario.mes}">
+				<option value="">Mês</option>
+				<option th:each="m : ${mes}"
+				th:text="${m}" th:value="${m}">
+				</option>
+				</select>
+
+				<select th:field="${usuario.ano}">
+				<option value="">Ano</option>
+				<option th:each="a : ${ano}"
+				th:text="${a}" th:value="${a}">
+				</option>
+				</select>
+			</td>
+		</tr>
+		
+		</tr>
+
+		<tr>
+			<td class="icon"><i class="fas fa-venus-mars"></i></td>
+			<td>
+			<div class="radio">
+				<input type="radio" th:field="${usuario.sexo}"
+					th:value="M"/> Masculino
+			</div>
+			<div class="radio">
+				<input type="radio" th:field="${usuario.sexo}"
+					th:value="F"/> Feminino
+			</div>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+			<div class="divBotoes">
+				<input type="submit" value="Cadastrar" class="botaoCad"/>
+				<input type="submit" value="Cancelar" class="botaoCanc"
+				formaction="/" formmethod="get"/>
+			</div>
+			</td>
+		</tr>
+	</table>
+	
+	</form>
+	</div>
+
+</body>
+</html>

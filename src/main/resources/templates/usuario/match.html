@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html layout:decorate = "~{layout}">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Match</title>
+    
+     <style>
+     
+     *,::after, ::before {
+     box-sizing: none;
+     }
+     
+       body {
+       
+	background: url("/imagens/iMetting.png");
+	}
+    
+    	select {
+    	width: 65%;
+    	}
+    
+    
+      #verPerfil{
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    }      
+      
+    </style>
+    
+</head>
+<body>
+
+<section  layout:fragment="corpo">
+
+
+
+<div id=dialog  style="overflow:scroll">
+    <form th:action="@{/usuarios/match}" method="get" class="formulario">
+       <table>
+       
+        <tr>
+           <td colspan="3"><h2>Matches Recebidos</h2></td>
+        </tr>
+       
+       
+       
+        
+        
+       
+    
+        <tr>
+        <th>Foto:</th>
+        <th>Nome:</th>
+        <th>Campus:</th>
+        <th>Perfil:</th>
+    
+        </tr>
+    
+        
+        
+        
+         <tr th:each="u : ${matchesRecebidos}">
+        	<td>
+        		<img th:if="${u.darMatch.foto != null}" 
+                    th:src="@{/download/} + ${u.darMatch.foto.id} +'?salvar=false'"
+                    style="max-height: 100px;"/>
+        	</td>
+            <td th:text="${u.darMatch.nome}"></td>
+            <td th:text="${u.darMatch.campus}"></td>
+            
+            
+            <td>
+				<a id="verPerfil"class="nav-link" th:href= "'/Publico/visitarPerfil/' + ${u.darMatch.id}" >
+				Ver Perfil
+				</a>
+				
+				</td>
+			<td>
+				
+				
+ 	
+	
+				 <a id="verPerfil"class="nav-link" th:href= "@{/Match/aprovarMatch/} + ${u.id}" >
+					Aprovar
+					</a>
+ 				
+			</td>
+				
+				
+        </tr>
+       
+       
+        <tr>
+            <td colspan="3"><h2>Matches Dados</h2></td>
+        </tr>
+        
+        
+        <tr th:each="u : ${matchesDados}">
+        	<td>
+        		<img th:if="${u.recebeMatch.foto != null}" 
+                    th:src="@{/download/} + ${u.recebeMatch.foto.id} +'?salvar=false'"
+                    style="max-height: 100px;"/>
+        	</td>
+            <td th:text="${u.recebeMatch.nome}"></td>
+            <td th:text="${u.recebeMatch.campus}"></td>
+            
+            
+            <td>
+				<a id="verPerfil"class="nav-link" th:href= "'/Publico/visitarPerfil/' + ${u.recebeMatch.id}" >
+				Ver Perfil
+				</a>
+				
+				</td>
+				
+				
+        </tr>
+        
+        
+        
+        
+        
+         <tr>
+            <td colspan="3"><h2>Matches Mutuos</h2></td>
+        </tr>
+        
+        
+        <tr colspan="4">
+        	<td th:each="u : ${matchesMutuos}">
+        	<img th:if="${u.darMatch.foto != null}" 
+                    th:src="@{/download/} + ${u.darMatch.foto.id} +'?salvar=false'"
+                    style="max-height: 100px;"/>
+                    
+			
+        	</td>
+        	</div>
+        	
+        	
+        	
+                    
+        	
+            
+           
+				
+				
+        </tr>
+        
+       
+       </table>
+	</form>
+	
+	</div>
+	
+	
+	
+	
+	
+	
+</section>
+
+</body>
+</html>
