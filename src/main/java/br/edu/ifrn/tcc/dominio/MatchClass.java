@@ -1,12 +1,19 @@
 package br.edu.ifrn.tcc.dominio;
 
-//OBJETIVO: essa classe tem o objetivo de guardar o match do usuario no banco de dados
-
-//AUTORES: Isadora Kaline Penha da Silva (isadorakalinesilva@gmail.com)
-//		   Igor Bruno das Chagas da Fonseca (brunno.chagas.1@gmail.com)
-
-//DATA DA CRIACAO: 09/03/2021
-//ULTIMA ALTERACAO: 30/12/2021
+/**
+*
+* OBJETIVO: essa classe tem o objetivo de guardar o match do usuario no banco de dados
+*
+* @author Isadora Kaline Penha da Silva (isadorakalinesilva@gmail.com)
+* @author Igor Bruno das Chagas da Fonseca (brunno.chagas.1@gmail.com)
+*
+* DATA DA CRIACAO: 09/03/2021
+################################
+* ULTIMA ALTERACAO: 30/12/2021
+*
+*###############################
+*
+*/
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,11 +46,13 @@ public class MatchClass {
 		this.aprovado = aprovado;
 	}
 
-	// relacionamento de muitos para um
+	/** relacionamento de muitos para um
+	*/
 	@ManyToOne (optional = false)
     private Usuario recebeMatch;
     
-	// variavel que guarda os matches aprovados
+	/** variavel que guarda os matches aprovados
+	*/
     private boolean aprovado;
 
     public int getId() {

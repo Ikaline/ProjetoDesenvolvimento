@@ -1,13 +1,19 @@
 package br.edu.ifrn.tcc.dominio;
 
-// OBJETIVO: essa classe tem o objetivo de guardar o usuario no banco de dados
-
-// AUTORES: Isadora Kaline Penha da Silva (isadorakalinesilva@gmail.com)
-//			Igor Bruno das Chagas da Fonseca (brunno.chagas.1@gmail.com)
-
-// DATA DA CRIACAO: 09/03/2021
-// ULTIMA ALTERACAO: 30/12/2021
-
+/**
+*
+* OBJETIVO: essa classe tem o objetivo de guardar o usuario no banco de dados
+*
+* @author Isadora Kaline Penha da Silva (isadorakalinesilva@gmail.com)
+* @author Igor Bruno das Chagas da Fonseca (brunno.chagas.1@gmail.com)
+*
+* DATA DA CRIACAO: 09/03/2021
+################################
+* ULTIMA ALTERACAO: 30/12/2021
+*
+*###############################
+*
+*/
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,7 +54,8 @@ public class Usuario {
 		return true;
 	}
 
-	//diferencia usuario administrador de usuario comum para acessa a pagina
+	/**diferencia usuario administrador de usuario comum para acessa a pagina
+	*/
 	public static final String ADMIN = "ADMIN";
 	public static final String USUARIO_COMUM = "COMUM";
 	
@@ -57,67 +64,80 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	// no projeto, essa variavel é a afinidade do usuario. Nao fica salvo no banco de dados
+	/** no projeto, essa variavel é a afinidade do usuario. Nao fica salvo no banco de dados.
+	*/
 	@Transient
 	private int afinidade;
 	
-	// nome do usuario
+	/** nome do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha campo nome!")
 	@Size (min = 4, message = "Nome deve ter no min. 4 caracteres!")
 	private String nome;
 	
-	//email do usuario
+	/**email do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha o campo email!")
 	private String email;
 	
-	// senha do usuario
+	/** senha do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha o campo senha!")
 	@Size (min = 6, message = "Senha deve ter no min. 6 caracteres!")
 	private String senha;
 	
-	// confirmacao de senha do usuario
+	/** confirmacao de senha do usuario
+	*/
 	@Transient
 	@Column(nullable = false)
 	private String confirm;
 	
-	// dia da data de nascimento do usuario
+	/** dia da data de nascimento do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha o campo dia!")
 	private String dia;
 	
-	// mes de nascimento do usuario
+	/** mes de nascimento do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha o campo mes!")
 	private String mes;
 	
-	// ano de nascimento do usuario
+	/** ano de nascimento do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha o campo ano!")
 	private String ano;
 	
-	// genero do usuario
+	/** genero do usuario
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha o campo sexo!")
 	private String sexo;
 	
-	// telefone para contato do usuario
+	/** telefone para contato do usuario
+	*/
 	@Column(nullable = false)
 	@Size (min = 11, message = "Nome deve ter no min. 11 caracteres!")
 	@NotBlank(message = "Preencha campo telefone!")
 	private String telefone;
 	
-	// campus em que o usuario estuda
+	/** campus em que o usuario estuda
+	*/
 	@Column(nullable = false)
 	@NotBlank(message = "Preencha campo campus!")
 	private String campus;
 	
-	// biografia do usuario
+	/** biografia do usuario
+	*/
 	private String bio;
 	
-	// interesses/gostos do usuario
+	/** interesses/gostos do usuario
+	*/
 	private String interesseDanca;
 	
 	private String interesseArte;
@@ -151,22 +171,28 @@ public class Usuario {
 	@Column(nullable = false)
 	private String perfil = USUARIO_COMUM;
 	
-	// relacionamento um para um
+	/** relacionamento um para um
+	*/
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private Arquivo foto;
 	
-	// relacionamento um para muitos
+	/** relacionamento um para muitos
+	*/
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Foto> publiFoto;
 	
-	// relacionamento um para muitos
+	/** relacionamento um para muitos
+	*/
 	@OneToMany(mappedBy = "darMatch")
 	private List<MatchClass> darmatch ;
 	
-	// relacionamento um para muitos
+	/** relacionamento um para muitos
+	*/
 	@OneToMany(mappedBy = "recebeMatch")
 	private List<MatchClass> recebematch;
 	
+	/** atributo do tipo matchClass
+	*/
 	@Transient
 	private List<MatchClass> matchesMutuos;
 	

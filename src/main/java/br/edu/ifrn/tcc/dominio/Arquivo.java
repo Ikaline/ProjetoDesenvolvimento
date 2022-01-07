@@ -1,12 +1,19 @@
 package br.edu.ifrn.tcc.dominio;
 
-//OBJETIVO: essa classe tem o objetivo de guardar o arquivo da foto do usuario no banco de dados
-
-//AUTORES: Isadora Kaline Penha da Silva (isadorakalinesilva@gmail.com)
-//		   Igor Bruno das Chagas da Fonseca (brunno.chagas.1@gmail.com)
-
-//DATA DA CRIACAO: 09/03/2021
-//ULTIMA ALTERACAO: 30/12/2021
+/**
+*
+* OBJETIVO: essa classe tem o objetivo de guardar o arquivo da foto do usuario no banco de dados
+*
+* @author Isadora Kaline Penha da Silva (isadorakalinesilva@gmail.com)
+* @author Igor Bruno das Chagas da Fonseca (brunno.chagas.1@gmail.com)
+*
+* DATA DA CRIACAO: 09/03/2021
+################################
+* ULTIMA ALTERACAO: 30/12/2021
+*
+*###############################
+*
+*/
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,19 +27,23 @@ import javax.persistence.Lob;
 @Entity
 public class Arquivo {
 	
-	// id para identificar usuario
+	/** id para identificar usuario
+	*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	//variavel que guarda o nome do arquivo
+	/** variavel que guarda o nome do arquivo
+	*/
 	@Column(nullable = false)
 	private String nomeArquivo;
 	
-	//variavel que guarda o tipo do arquivo
+	/** variavel que guarda o tipo do arquivo
+	*/
 	private String tipoArquivo;
 	
-	//variavel que guarda os dados do arquivo
+	/** variavel que guarda os dados do arquivo
+	*/
 	@Lob
 	@Basic(fetch =FetchType.LAZY)
 	private byte[] dados;
